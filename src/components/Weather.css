@@ -10,5 +10,16 @@
 .search-bar{
     display: flex;
     align-items:center;
-    gap: 10px;
+    gap: 12px;
+}
+
+.search-bar input{
+    height:50px;
+    border: none;
+    outline:none;
+    padding: none;
+    border-radius:40px;
+    color:bisque;
+    background: #e7ded2;
+    font-size: 18px;
 }
