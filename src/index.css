@@ -12,3 +12,26 @@
   display: grid;
   background-color: rgba(51, 138, 131, 0.384);
 }
+.weather-data{
+  width: 100%;
+  margin-top: 40px;
+  color: #fff;
+  justify-content: space-between;
+}
+
+.weather-data .col{
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  font-size: 20px;
+
+}
+.weather-data .col span{
+  display: block;
+  font-size: 16px;
+}
+/* Adjust imagesize */
+.weather-data .col img {
+  width: 26px;   
+  margin-top: 10px;
+}
