@@ -18,8 +18,8 @@ const Weather = () => {
              </div> 
              <img src = {clear_icon} alt="" className = "weather-icon"/>
 
-             <p>20°c</p>
-             <p>Kawempe</p>
+             <p className='temperature'>20°c</p>
+             <p className='location'>Kawempe</p>
       </div>
     );
   };
