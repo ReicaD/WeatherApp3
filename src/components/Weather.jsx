@@ -54,10 +54,7 @@ const Weather = () => {
         location: data.name,
         icon: icon,
       });
-    } catch (error)
-    
-    { 
-          
+    } catch (error) {
       setError("⚠️ Failed to fetch data, try again!");
       setTimeout(() => setError(""), 3000);
     }
@@ -68,8 +65,8 @@ const Weather = () => {
   }, []);
 
   return (
-      <div className="weather">
-        <h1 className="weather-title">Weather App</h1>
+    <div className="weather">
+      <h1 className="weather-title">Weather App</h1>
       {/* Search Bar */}
       <div className="search-bar">
         <input ref={inputRef} type="text" placeholder="Search" />
@@ -79,38 +76,41 @@ const Weather = () => {
           onClick={() => search(inputRef.current.value)}
         />
       </div>
-        {weatherData?<>
-        
-      {/* Error Message */}
-      {error && <p className="error-message">{error}</p>}
+      {weatherData ? (
+        <>
+          {/* Error Message */}
+          {error && <p className="error-message">{error}</p>}
 
-      {/* Weather Icon */}
-      {weatherData.icon && (
-        <img src={weatherData.icon} alt="" className="weather-icon" />
+          {/* Weather Icon */}
+          {weatherData.icon && (
+            <img src={weatherData.icon} alt="" className="weather-icon" />
+          )}
+
+          {/* Temperature & Location */}
+          <p className="temperature">{weatherData.temperature}°c</p>
+          <p className="location">{weatherData.location}</p>
+
+          {/* Weather Data - Now Wrapping .col */}
+          <div className="weather-data">
+            <div className="col">
+              <img src={cloudy_icon} alt="" />
+              <div>
+                <p>{weatherData.humidity} %</p>
+                <span>Humidity</span>
+              </div>
+            </div>
+            <div className="col">
+              <img src={wind_icon} alt="" />
+              <div>
+                <p>{weatherData.windSpeed}km/h</p>
+                <span>Wind Speed</span>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <></>
       )}
-
-      {/* Temperature & Location */}
-      <p className="temperature">{weatherData.temperature}°c</p>
-      <p className="location">{weatherData.location}</p>
-
-      {/* Weather Data - Now Wrapping .col */}
-      <div className="weather-data">
-        <div className="col">
-          <img src={cloudy_icon} alt="" />
-          <div>
-            <p>{weatherData.humidity} %</p>
-            <span>Humidity</span>
-          </div>
-        </div>
-        <div className="col">
-          <img src={wind_icon} alt="" />
-          <div>
-            <p>{weatherData.windSpeed}km/h</p>
-            <span>Wind Speed</span>
-          </div>
-        </div>
-      </div>
-        </>:<></>}
     </div>
   );
 };
