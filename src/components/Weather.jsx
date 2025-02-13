@@ -68,7 +68,8 @@ const Weather = () => {
   }, []);
 
   return (
-    <div className="weather">
+      <div className="weather">
+        <h1 className="weather-title">Weather App</h1>
       {/* Search Bar */}
       <div className="search-bar">
         <input ref={inputRef} type="text" placeholder="Search" />
