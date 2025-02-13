@@ -5,7 +5,7 @@ import clear_icon from "../assets/clear.png";
 import cloudy_icon from "../assets/cloudy.png";
 import wind_icon from "../assets/wind.png";
 import drizzle_icon from "../assets/drizzle.png";
-import rain_icon from "../assets/rain.png";
+import rain_icon from "/src/assets/rain.png";
 import snow_icon from "../assets/snow.png";
 import weathernews_icon from "../assets/weathernews.png";
 import sun_icon from "../assets/sun.png";
