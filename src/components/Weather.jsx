@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Weather.css";
 import search_icon from "../assets/search.png";
 import clear_icon from "../assets/clear.png";
@@ -11,17 +11,34 @@ import weathernews_icon from "../assets/weathernews.png";
 import sun_icon from "../assets/sun.png";
 
 const Weather = () => {
-   const search = async (city)=>{
-     try {
-       const url = `https://api.openweathermap.org/data/2.5/weather?q={city}&appid=${import.meta.env.VITE_APP_ID}`;
+  const [weatherData, setWeatherData] = useState(false);
+  const search = async (city) => {
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
+        import.meta.env.VITE_APP_ID
+      }`;
 
-       const response = await fetch(url);
-       const data = await response.json();
-       console.log(data);
-     } catch (error) {
-       
-     }
-   }
+      const response = await fetch(url);
+      const data = await response.json();
+
+      console.log(data);
+      console.log("Fetching from URL:", url);
+      //calling data for the API to function
+      setWeatherData({
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed,
+        //to display interger we pass math.floor() and call the api subs
+        temperature: Math.floor(data.main.temp),
+        location: data.name,
+        
+      });
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    search("Arusha");
+  }, []);
+
   return (
     <div className="weather">
       {/* Search Bar */}
@@ -35,7 +52,7 @@ const Weather = () => {
 
       {/* Temperature & Location */}
       <p className="temperature">20°c</p>
-      <p className="location">Kawempe</p>
+      <p className="location">Arusha</p>
 
       {/* Weather Data - Now Wrapping .col */}
       <div className="weather-data">
