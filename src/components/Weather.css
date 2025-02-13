@@ -1,50 +1,121 @@
 .weather {
-  place-self: center;
-  padding: 40px;
-  border-radius: 10px;
-  background-image: linear-gradient(45deg, #396beb, #53becc);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.search-bar {
-  display: flex;
-  text-align: justify;
-  align-items: center;
-  gap: 12x;
-}
-
-.search-bar input {
-  height: 50px;
-  border: none;
-  outline: none;
-  padding: none;
-  border-radius: 40px;
-  color: rgb(0, 0, 0);
-  background: #e7ded2;
-  font-size: 18px;
-}
-.search-bar img {
-  width: 50px;
-  padding: 15;
-  border-radius: 50%;
-  background: #7ba8b9;
-  cursor: pointer;
-}
-
-.weather-icon{
-    width: 150px;
-    margin: 30px 0 ;
-}
-
-.temperature{
-    color: #ffff;
-    font-size: 80px;
-    line-height: 1;
-}
-
-.location{
-    color:#ffff;
-    font-size: 40px;
-    
-}
+    place-self: center;
+    padding: 40px;
+    border-radius: 10px;
+    background-image: linear-gradient(45deg, #396beb, #53becc);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Fixed typo */
+  }
+  
+  .search-bar input {
+    height: 50px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    padding: 10px 20px; /* Added padding */
+    color: rgb(0, 0, 0);
+    background: #e7ded2;
+    font-size: 18px;
+  }
+  
+  .search-bar img {
+    width: 50px;
+    padding: 10px; /* Fixed missing px */
+    border-radius: 50%;
+    background: #7ba8b9;
+    cursor: pointer;
+  }
+  
+  /* Weather Icon */
+  .weather-icon {
+    width: 120px; /* Reduced size slightly */
+    margin: 20px 0;
+  }
+  
+  /* Temperature & Location */
+  .temperature {
+    color: #fff;
+    font-size: 60px; /* Reduced size slightly */
+    font-weight: bold;
+  }
+  
+  .location {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Weather Data Section */
+  .weather-data {
+    width: 100%;
+    margin-top: 20px; /* Fixed incorrect syntax */
+    color: #fff;
+    display: flex;
+    justify-content: space-around; /* Even spacing */
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+  }
+  
+  /* Weather Data Columns */
+  .weather-data .col {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduced gap */
+    font-size: 20px;
+    background: rgba(255, 255, 255, 0.2); /* Light background for visibility */
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  /* Column Icons */
+  .weather-data .col img {
+    width: 30px; /* Slightly larger for visibility */
+    margin: 0;
+  }
+  
+  /* Column Text */
+  .weather-data .col div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .weather-data .col p {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  .weather-data .col span {
+    font-size: 14px;
+  }
+  .error-message {
+    position: fixed;  /* Make it fixed at the top */
+    top: 20px;        /* Give some space from the top */
+    left: 50%;        /* Center horizontally */
+    transform: translateX(-50%);  /* Center align horizontally */
+    background-color: rgba(255, 0, 0, 0.8);  /* Red background with opacity */
+    color: white;     /* White text */
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 9999;    /* Ensure it's on top of other elements */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Add shadow for better visibility */
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  /* Optional: You can add a fade-out effect after 3 seconds */
+  .error-message.fade-out {
+    opacity: 0;
+  }
+  
