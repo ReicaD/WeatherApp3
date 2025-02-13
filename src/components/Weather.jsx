@@ -14,7 +14,8 @@ import sun_icon from "../assets/sun.png";
 const Weather = () => {
   const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(false);
-  const [error, setError] = useState(""); // Define error state here
+  // Define error state here
+  const [error, setError] = useState("");
 
   const allIcons = {
     "01d": clear_icon,
@@ -33,7 +34,8 @@ const Weather = () => {
       setTimeout(() => setError(""), 3000);
       return;
     }
-    setError(""); // Clear error if input is valid
+    // Clear error if input is valid
+    setError("");
 
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
@@ -52,7 +54,10 @@ const Weather = () => {
         location: data.name,
         icon: icon,
       });
-    } catch (error) {
+    } catch (error)
+    
+    { 
+          
       setError("⚠️ Failed to fetch data, try again!");
       setTimeout(() => setError(""), 3000);
     }
@@ -73,7 +78,8 @@ const Weather = () => {
           onClick={() => search(inputRef.current.value)}
         />
       </div>
-
+        {weatherData?<>
+        
       {/* Error Message */}
       {error && <p className="error-message">{error}</p>}
 
@@ -103,6 +109,7 @@ const Weather = () => {
           </div>
         </div>
       </div>
+        </>:<></>}
     </div>
   );
 };

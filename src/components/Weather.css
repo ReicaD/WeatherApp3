@@ -2,7 +2,7 @@
     place-self: center;
     padding: 40px;
     border-radius: 10px;
-    background-image: linear-gradient(45deg, #396beb, #53becc);
+    background-image: linear-gradient(45deg, #0c1f50, #60fcff);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,7 +43,7 @@
   /* Temperature & Location */
   .temperature {
     color: #fff;
-    font-size: 60px; /* Reduced size slightly */
+    font-size: 60px;  
     font-weight: bold;
   }
   
@@ -57,28 +57,28 @@
   /* Weather Data Section */
   .weather-data {
     width: 100%;
-    margin-top: 20px; /* Fixed incorrect syntax */
+    margin-top: 20px;  
     color: #fff;
     display: flex;
-    justify-content: space-around; /* Even spacing */
+    justify-content: space-around;  
     align-items: center;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap; 
   }
   
   /* Weather Data Columns */
   .weather-data .col {
     display: flex;
     align-items: center;
-    gap: 8px; /* Reduced gap */
+    gap: 8px;  
     font-size: 20px;
-    background: rgba(255, 255, 255, 0.2); /* Light background for visibility */
+    background: rgba(255, 255, 255, 0.2); 
     padding: 10px;
     border-radius: 10px;
   }
   
   /* Column Icons */
   .weather-data .col img {
-    width: 30px; /* Slightly larger for visibility */
+    width: 30px;  
     margin: 0;
   }
   
@@ -98,19 +98,18 @@
     font-size: 14px;
   }
   .error-message {
-    position: fixed;  /* Make it fixed at the top */
-    top: 20px;        /* Give some space from the top */
-    left: 50%;        /* Center horizontally */
-    transform: translateX(-50%);  /* Center align horizontally */
-    background-color: rgba(255, 0, 0, 0.8);  /* Red background with opacity */
-    color: white;     /* White text */
+    position:relative;  
+    top: 10px;      
+    left: 50%;         
+    transform: translateX(-50%);   
+    background-color: rgba(255, 0, 0, 0.92);   
+    color: white;    
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
-    z-index: 9999;    /* Ensure it's on top of other elements */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  /* Add shadow for better visibility */
-    opacity: 1;
+    z-index: 2398;   
+    box-shadow: 0 4px 8px rgba(80, 13, 13, 0.2);  
     transition: opacity 0.5s ease-out;
   }
   
