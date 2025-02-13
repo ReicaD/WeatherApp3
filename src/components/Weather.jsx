@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./Weather.css";
 import search_icon from "../assets/search.png";
 import clear_icon from "../assets/clear.png";
@@ -13,39 +12,45 @@ import sun_icon from "../assets/sun.png";
 
 const Weather = () => {
   const inputRef = useRef();
-  const [weatherData, setWeatherData] = useState(false);
-  // Define error state here
+  const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
 
   const allIcons = {
-    "01d": clear_icon,
+    "01d": sun_icon,
     "01n": clear_icon,
+    "02d": cloudy_icon,
     "04d": drizzle_icon,
     "10n": rain_icon,
     "13n": snow_icon,
-    "02d": cloudy_icon,
-    "01d": sun_icon,
     "13d": weathernews_icon,
   };
 
   const search = async (city) => {
-    if (city.trim() === "") {
+    if (!city.trim()) {
       setError("⚠️ Enter City Name");
       setTimeout(() => setError(""), 3000);
       return;
     }
-    // Clear error if input is valid
+
     setError("");
 
     try {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${
-        import.meta.env.VITE_APP_ID
-      }`;
+      const apiKey = import.meta.env.VITE_APP_ID;
+      if (!apiKey) {
+        setError("⚠️ API Key is missing!");
+        return;
+      }
 
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
       const response = await fetch(url);
       const data = await response.json();
 
-      const icon = allIcons[data.weather[0].icon] || clear_icon;
+      if (data.cod !== 200) {
+        setError(`⚠️ ${data.message}`);
+        return;
+      }
+
+      const icon = allIcons[data.weather?.[0]?.icon] || clear_icon;
 
       setWeatherData({
         humidity: data.main.humidity,
@@ -61,21 +66,23 @@ const Weather = () => {
   };
 
   useEffect(() => {
-    search("ottawa");
+    search("Ottawa");
   }, []);
 
   return (
     <div className="weather">
-      <h1 className="weather-title">Weather App</h1>
+      <h1 className="weather-title">SkyScope</h1>
+
       {/* Search Bar */}
       <div className="search-bar">
         <input ref={inputRef} type="text" placeholder="Search" />
         <img
           src={search_icon}
-          alt=""
+          alt="Search"
           onClick={() => search(inputRef.current.value)}
         />
       </div>
+
       {weatherData ? (
         <>
           {/* Error Message */}
@@ -83,26 +90,26 @@ const Weather = () => {
 
           {/* Weather Icon */}
           {weatherData.icon && (
-            <img src={weatherData.icon} alt="" className="weather-icon" />
+            <img src={weatherData.icon} alt="Weather Icon" className="weather-icon" />
           )}
 
           {/* Temperature & Location */}
-          <p className="temperature">{weatherData.temperature}°c</p>
+          <p className="temperature">{weatherData.temperature}°C</p>
           <p className="location">{weatherData.location}</p>
 
           {/* Weather Data - Now Wrapping .col */}
           <div className="weather-data">
             <div className="col">
-              <img src={cloudy_icon} alt="" />
+              <img src={cloudy_icon} alt="Humidity" />
               <div>
                 <p>{weatherData.humidity} %</p>
                 <span>Humidity</span>
               </div>
             </div>
             <div className="col">
-              <img src={wind_icon} alt="" />
+              <img src={wind_icon} alt="Wind Speed" />
               <div>
-                <p>{weatherData.windSpeed}km/h</p>
+                <p>{weatherData.windSpeed} km/h</p>
                 <span>Wind Speed</span>
               </div>
             </div>
