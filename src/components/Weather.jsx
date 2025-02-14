@@ -5,7 +5,6 @@ import clear_icon from "../assets/clear.png";
 import cloudy_icon from "../assets/cloudy.png";
 import wind_icon from "../assets/wind.png";
 import drizzle_icon from "../assets/drizzle.png";
-import rain_icon from "../assets/rain.png"
 import snow_icon from "../assets/snow.png";
 import weathernews_icon from "../assets/weathernews.png";
 import sun_icon from "../assets/sun.png";
@@ -20,7 +19,7 @@ const Weather = () => {
     "01n": clear_icon,
     "02d": cloudy_icon,
     "04d": drizzle_icon,
-    "09d": rain_icon,
+    // "09d": rain_icon,
     "13n": snow_icon,
     "13d": weathernews_icon,
   };
