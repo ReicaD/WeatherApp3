@@ -4,22 +4,25 @@ import search_icon from "../assets/search.png";
 import clear_icon from "../assets/clear.png";
 import cloudy_icon from "../assets/cloudy.png";
 import wind_icon from "../assets/wind.png";
+// import rain_icon from "../assets/rain.png";
 import drizzle_icon from "../assets/drizzle.png";
 import snow_icon from "../assets/snow.png";
 import weathernews_icon from "../assets/weathernews.png";
 import sun_icon from "../assets/sun.png";
 
 const Weather = () => {
+  const rain_icon = new URL("../assets/rain.png", import.meta.url).href;
   const inputRef = useRef();
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
+  // console.log("rain -- icon",rain_icon);
 
   const allIcons = {
     "01d": sun_icon,
     "01n": clear_icon,
     "02d": cloudy_icon,
     "04d": drizzle_icon,
-    // "09d": rain_icon,
+    "09d": rain_icon,
     "13n": snow_icon,
     "13d": weathernews_icon,
   };
